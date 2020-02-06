@@ -145,6 +145,53 @@ F: 1, 79
 
  Der FTA Algorithmus sortiert die empfangenen Zeiten und ignoriert die k größten und die k kleinsten Zeiten. Aus den verbliebenen wird entweder der
  Durchschnitt oder der Median berechnet, um die neue Zeit zu bestimmen.
+** 18 Erkläre den Unterschied zwischen Rate Correction und State Correction?
+
+ Bei der State Correction wird der lokalen Zeit direkt ein neuer Wert zugewiesen. Dadurch können aber Diskontinuitäten entstehen. Daher wird der Korrekturwert in kleinere Schritte aufgeteilt und korrigiert (z.B.: ein Microtick pro Macrotick)
+
+ Bei der Rate Correction wird nicht der die lokale Zeit, sondern die Clock Rate angepasst (z.B. das Verhältnis von Micro- zu Macroticks ändern). Vorsicht ist geboten, da dadurch eine Oszillation der Clocks entstehen kann.
+
+ F1: 55
+
+** 19 Erkläre Load Hypothesis?
+
+ Wichtige Annahme beim Erstellen eines Modells eines fehlertoleraten Echtzeitsystems.
+ Aussagen über die Reaktionszeit können nur unter der Annahme getroffen werden, dass das System unterhalb der maximalen Last (peak load) arbeitet. (z.B.: mximale Anfragen pro Sekunde)
+
+ F1: 59
+
+** 20 Erkläre Fault Hypothesis?
+
+ Wichtige Annahme beim Erstellen eines Modells eines fehlertoleraten Echtzeitsystems.
+ Fehler, die zur Laufzeit auftreten können, müssen betrachtet werden. Wenn Fehler auftreten, die nicht durch die Fault Hypothesis abgedeckt sind, wird eine fehlertolerantes System dennoch ausfallen. (z.B.: nur eine Komponente fällt zur Laufzeit aus)
+
+ F1: 59
+
+** 21 Erkläre h-State und Ground State?
+
+ h-State:      Der Zustand eines Computers (program counter, data structures, ...), der zum beobachteten Zeitpunkt in einen neuen Computer übertragen werden müsste, damit dieser die Ausführung fortführt. Größe des h-States ist abhängig von der Abstraktion und dem Beobachtungszeitpunkt.
+
+ Ground State: Ein Knoten in einem verteilten System hat keine aktiven Aufgaben und die Kommunikationskanale sind leer (keine Nachrichten werden übertragen). Ground State => h-State ist minimal
+
+ F1: 75
+
+** 22 Erkläre die wesentlichen Eigenschaften, die für ein Interface in einem Real-Time System beschrieben sein müssen?
+
+ Control properties:  Eigenschaften der Kontrollsignale, z.B.: interrupt, chips-select
+ Temporal properties: Zeitliche Einschränkungen, die die Kontrollsignale einhalten müssen
+ Functional intend:   Spezifikation der beabsichtigeten Funktion der Interface-Partner
+ Data properties:     Struktur der Daten, bit ordering
+
+ F1: 64
+
+** 23 Erkläre die drei Zeitdauern einer Aktion
+
+ d_act:  Tatsächliche Ausführungszeit
+ d_min:  Minimale Ausführungszeit
+ d_WCET: Worst Case Execution Time: Maximal Ausführungszeit unter Betrachtung der Load und Fault Hypothesen
+
+ F1: 67
+
 
 ** 25 Erkläre den Unterschied zwischen Simple Task und Complex Task
 Simple Task (S-Task) beschreibt eine Process der keine Synchronisation
@@ -165,6 +212,15 @@ F: 1, 70
 ** 27 Welches Problem tritt auf, wenn man versucht die WCET eines Complex Task zu ermitteln?
 
  Da der Complex Task eine blockierende Synchronisation(zB Warten auf Semaphore) beinhaltet, ist die WCET abhängig von den anderen laufenden Tasks und kann dadurch nur sehr schwer bestimmt werden.
+** 28 Erkläre RT Entity, RT Image
+
+ Eine Real-Time Entity ist eine Zustandvariable, die entweder in der Umgebung oder innerhalb des Computers liegt. Sie ändert ihren Wert über die Zeit und kann sowohl zeitkontinuierlich als auch zeitdiskret sein. Sie hat statische Attribute (z.B. Name) und dynamische Attribute (z.B. der Wert der Variable). Die Entity liegt in der "spehre of control" eines Subsystems. Sie kann also innerhalb des Subsystem verändert, von ausserhalb aber nur beobachtet werden.
+
+ Ein Real-Time Image ist die Beobachtung einer RT Entity innerhalb eines Computers. Es hat, abhängig von der Geschwindigkeit der Änderung der RT Entity, nur ein kurzes Genauigkeitsintervall.
+
+ Beispiele: Temperatur eine Flüssigkeit, Spannung an einem Stecker, Variable in einem Computer, ...
+
+ F1: 19/78
 ** 29 Erkläre Observation
      Als Observation bezeichnet man eine "Betrachtung" eines Echtzeitsystems oder einer seiner Komponenten (RT-Entity).
      Es können nur States (Zustände) beobachtet werden, keine Events (Wechsel eines Wertes auf einen neuen Wert). 
@@ -298,6 +354,47 @@ F: 1, 70
 ** 47: Erkläre das Non-Blocking Write Protokoll
  Hierbei gibt es nur einen Writer der nie blockiert. Der Leser vernichtet die Nachrichten nicht. Es kann vorkommen, dass der Leser inkonsistente Daten erhählt. Wenn der Leser diese Interferenz bemerkt, wird der Lesevorgang wiederholt (maximale Anzahl an Wiederholungen meißt festgelegt).
 
+** 48 Nenne 4 Methoden zur Fehlererkennung in einem Betriebssystem
+1. Uberwachung der Anzahl der Taskausfu ̈hrung
+2. Uberwachung der Interruptfrequenz
+5. Februar 2020 22
+ DRS Klausur JG1920
+3. Doppelte Taskausfu ̈hrung: Erlaubt die zuverla ̈ssige Erkennung von transien- ten (voru ̈bergehenden) Fehlern. Optimalerweise stellt das Betriebssystem eine Methodik dafu ̈r zur Verfu ̈gung.
+4. Watchdog: Am besten externer Chip. Trigger auslo ̈sen in Idle-Task u ̈berwacht  ̈
+5. Exception Handling: Aber: Worst-Case-Excecution Time des Tasks steigt um die la ̈ngste Fehlerbehandlungszeit.
+6. Selbstu ̈berwachung: i-state und h-state
+7. Challenge Response: Ein externer Error Detector sendet periodisch Challenges an das System und erkennt ungu ̈ltige Antworten.
+F:2, 32
+** 49 Erkl ̈are Periode, Deadline und Laxity von Tasks
+Bei der Periode eines Tasks handelt es sich um die Zeit die zwischen 2 Ausfu ̈hrungen (Starts) vergeht. Startet eine Task alle 50 ms so ist die Periode 50 ms.
+Bei der Deadline eines Tasks handelt es sich um die Zeit nach der der Task fertig sein muss. Zwischen Start und Ende des Tasks darf also maximal tDeadline vergehen.
+Die Laxity eines Tasks beschreibt den Spielraum der fu ̈r die Einhaltung der Dead- line bleibt. Hat der Task eine Deadline von 5 ms und eine Ausfu ̈hrung beno ̈tigt 3 ms Rechenzeit, so wa ̈re die Laxity 2 ms.
+Abbildung 10: Periode, Deadline und Laxity
+F:2, 40
+Betriebssystem. Besser: Trigger in Application Task ⇒ Uberwacht Applikation (End-to-End)
+
+** 50 Unterschied zwischen statischem und dynamischem Scheduler
+Bei dynamischen Scheduling (Online-Scheduling) werden die Schedulingentscheidun- gen zur Laufzeit getroffen. ⇒ Flexibel aber Laufzeitoverhead
+Bei statischem Scheduling (pre-runtime) werden die Schedulingentscheidungen beim kompilieren getroffen. ⇒ Taskauswahl u ̈ber Dispatching-Tabelle ⇒ Kaum- Laufzeitoverhead
+F:2, 41
+
+** 51 Erklaere einen notwendigen (necessary) Schedulability Test
+Notwendige Bedingung: Falls nicht erfu ̈llt auf keinen Fall, falls erfu ̈llt mo ̈glicherweise schedulebar.
+Eine Bedingung: Summe u ̈ber alle Tasks von (TaskExecutionTime/TaskPeriode) muss kleinergleich Anzahl der Prozessoren sein (Formel: Foliensatz-2/S.43)
+μ=􏰂ci/pi ≤n (1)
+c = Task-Ausfu ̈hrungszeit
+p = Task-Periode
+n = Anzahl der Prozessoren
+F:2, 42,43
+1.52 Erkl ̈are den Rate Monotonic Scheduling Algorithmus
+• Statische Task Priorita ̈ten werden nach Taskperiode vergeben: Ku ̈rzester Task hat ho ̈chste Priorita ̈t
+• Preemptiv ⇒ Ku ̈rzere Tasks unterbrechen la ̈ngere sofort.
+• Bei unendlich vielen CPUs kann der Algorithmus alle Deadlines einhalten so-
+lang die CPU-Auslastung unter 69% liegt. (Formel Foliensatz-2/S.44)
+μ = 􏰂 ci/pi ≤ n 􏰀21/n − 1􏰁 (2)
+• Annahmen:Tasksunabha ̈ngig-KeinRessource-Sharing,Context-Switchessind gratis, Periode ist deterministisch und gleich der Deadline
+F:2, 44
+
 ** 53 Erkläre den Earliest-Deadline-First Algorithmus
 	 - Optimaler Algorithmus auf einem Single Core System.
 	 - Preemtives Scheduling --> Unterbricht Tasks.
@@ -384,6 +481,39 @@ F: 1, 70
  intentional fault: sabotage, in SW trojaner/virus
 
  design fault: nicht beabsichtigt aber ausgelöst durch error in design. Mit strengem requirement engineering kann dem vorgebeugt werden.
+
+** 65 Erkl ̈are transient hardware faults
+ ̈
+THF sind voru ̈bergehende Fehler im System. Diese Fehler ko ̈nnen durch Uberhitzung,
+Strahlung, Vibration, Elektromagnetische Interference (EMI) oder Elektrostatische Entladung verursacht werden.
+F:3, 11
+
+** 66 Was beschreibt Reliability R(t)
+Liefert die Wahrscheinlichkeit das ein System den vorgegebenen Service zum Zeit- punkt t ermo ̈glicht.
+R(t) = e−λ(t−t0) (3)
+λ ... Fehlerrate [Fails/h]
+1/λ ... MTTF (Mean-Time-to-Failure)
+F:3, 13
+** 67 Erkl ̈are die Badewannenkurve
+Die Fehlerrate eines Subsystems ist nicht konstant. Die Badewannenkurve beschreibt die Zeitliche Wahrscheinlichkeitsverteilung mit der es zu Fehlverhalten kommt.
+Abbildung 14: Badewannenkurve
+(Zusatz-Info aus Internet) Aufteilen kann man diese Kurve auf drei Sektionen, wie das folgende Bild zeigt.
+• Der erste Teil ist eine Abnehmende Sto ̈rungsrate, bekannt als fru ̈he Ausfa ̈lle oder Sa ̈uglingssterblichkeit.
+• Der zweite Teil ist eine konstante Sto ̈rungsrate, bekannt als Zufallsausfa ̈lle.
+• Der dritte Teil ist eine zunehmende Sto ̈rungsrate, bekannt als Alterserschei-
+nung. F:3, 14
+
+** 68 Erkl ̈are Availability
+Diese Kennzahl beschreibt die Verfu ̈gbarkeit eines korrekten Service, dass das Sys- tem liefert. Dabei wird die MTTF (Mean-Time-to-Failure) und die MTTR (Mean- Time-to-Repair) beru ̈cksichtigt. Mit folgender Formel la ̈sst sich die Availability (Verfu ̈gbarkeit) bestimmen:
+A= MTTF (4) MTTF −MTTR
+MTTF-MTTR = MTBF (Mean Time Between Failures)
+Die Availability ist hoch wenn MTTF groß ist und die MTTR klein.
+F:3, 16
+** 69 Welche Arten von Redundanz ko ̈nnen fu ̈r Fault-Tolerance verwendet werden
+• Information Redundancy: Erreichen der Fehlertoleranz durch Codierung oder Replizieren der Daten. Beispiele fu ̈r “Information redundancy” sind ECC (Error Correcting Codes) speicher und ECC in Datenblo ̈cken.
+• Time Redundancy: Dabei wird eine Operation mehrmals ausgefu ̈hrt und das Ergebnis gespeichert. Diese Ergebnisse werden anschließend verglichen. Eine Beispielhafte Anwendung findet dies bei Timeouts und anschließender wieder versenden von Daten. Diese Form der Redundanz ist bei voru ̈bergehenden oder intermittierenden Fehlern nu ̈tzlich.
+• Physical Redundancy: Duplizierung der HW damit der Ausfall einer Kom- ponente im System toleriert werden kann. Beispiele sind RAID-Festplatten und Backup-Nameserver.
+F:3, 21
 
 ** 70 Warum ist ein Node als Unit of Failure geeignet
  [Foliensatz 3 Seite 22]
