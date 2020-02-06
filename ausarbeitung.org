@@ -1,0 +1,417 @@
+** 1 Unterschied zwischen Hard Deadline und Soft Deadline
+Hard Deadline, Zeitschranke muss eingehalten werden, Datenpakete sind
+klein und nur kurz gültig.
+
+Soft Deadline, Zeitschranke muss so gut wie möglich eingehalten
+werden, große datenmengen und gültigkeit sowie keine automatische
+Fehlererkennung.
+
+F: 1, 21
+** 2 Was ist ein Update Delay?
+Bezeichnet die Zeit von der Aufnahme eines Physikalischen Wertes und
+dem Update der Abbildung im Echtzeitsystem.
+
+F: 1, 82
+** 3 Was ist der Computer Delay?
+Bezeichnet den Zeitintervall zwischen dem Sample eines Eingangswertes
+und der Reaktion des Computers mit einem Ausgangswert.
+
+F: 1, 82
+** 4 Warum werden Echtzeitsysteme verteilt gebaut?
+Gründe um ein System verteilt aufzubauen:
+
+1. Reduktion der Komplexität
+2. Möglichkeit zur Skalierung des Systems
+3. erhöhte Zuverlässigkeit
+
+F: 1, 6
+** 5 Unterschied zwischen State Information und Event Information?
+Der State ist die Information eines Zustandes einer RT Entity
+(Physikalischer Wert, Temperatur). Ein Event kann nicht beobachtet
+werden und bezeichnet die Änderung eines States.
+
+[[./state_event_information.png]]
+
+F: 1, 79
+
+
+** 6 Unterschied zwischen Autonomous Control und External Control?
+
+ Die Entscheidung, wann eine Nachricht gesendet werden muss, kann vom
+ Host-Computer (External Control) oder vom Kommunikationssystem 
+ (Autonomous Control) gesteuert werden.
+
+ Bei External Control wird das Send-Kommando vom Host getriggert um das 
+ Senden einer Nachricht auszulösen. Beim Empfänger erfolgt ein Interrupt
+ wenn das Paket empfangen wird. (Eventbasierte Systeme)
+
+ Bei Autonomous Control existiert ein Zeitslot um Nachrichten zu senden und
+ empfangen. Dies wird in Zeitgesteuerten Systemen eingesetzt.
+
+** 7 Unterschied zwischen Temporal Order und Causal Order?
+
+ Temporal Order: Werden bspw. Events bei allen Teilnehmern in der selben
+				 Reihenfolge verarbeitet, wie sie aufgetreten sind, wird
+				 dies Temporal Order genannt. Dies kann durch eine globale
+				 Zeitbasis und darauf basierenden Zeitstempel für jedes Event
+				 realisiert werden.
+				 (Die Events müssen nicht voneinander abhängen)
+
+
+ Causal Order: 	In real-time Applikationen sind die kausalen Abhängigkeiten 
+				 von Events von Interesse. Dafür ist die Temporal Order nötig,
+				 aber nicht ausreichend. Causal order ist mehr als temporal order.
+				 Ein Event hängt von einem zuvor ausgelösten Event ab.
+				 (Event A kann nur Event B verursacht haben, wenn A vor B aufgetreten ist)
+
+** 8 Wie ist eine Physical Clock definiert?
+
+ Eine Physical Clock ist ein Element um Zeit zu messen. Es beinhaltet einen 
+ Zähler und einen oszillierenden Mechanismus, welcher periodisch ein Event 
+ generiert und den Zähler inkrementiert.
+
+** 9 Erkläre Microtick, Macrotick, Granularity
+
+ Microtick: Das periodische Event der Physical Clock ist als microtick definiert.
+
+ Macrotick: Jeder n-te Microtick. Wird zur Darstellung der Globalen Zeit verwendet.
+
+ Granularity: 	Die Zeitdauer zwischen zwei aufeinanderfolgenden Microticks
+				 ist die Granularität.  
+
+** 10 Erkläre Reference Clock
+
+ Eine einzigartige Referenzzeit Z mit der Frequenz f, 
+ welche perfekt auf die Internationale Standard Zeit abgestimmt ist. 
+
+ Dadurch, dass die Referenzzeit nur einmal vorhanden ist, kann jedes Event mit
+ einem absoluten Zeitstempel versehen werden.
+
+** 11 Erkläre Clock Drift
+
+ Der unterschied zwischen der physical clock und der reference clock. 
+ Wird durch die Drift Rate dargestellt
+ perfect clock: drift rate = 0
+
+** 12 Erkläre Accuracy und Precision
+
+ Precision:
+     Maximaler offset zwischen zwei beliebiegen Clocks.
+ Accuracy:
+     Maximaler offset einer Clock zu der externen Zeit Referenz.
+
+ TODO: Bild precision.PNG
+
+** 13 Erkläre Reasonableness Condition. Was passiert, wenn diese Bedingung nicht eingehalten wird?
+
+ Eine globale Zeit wird als reasonable bezeichnet, wenn alle lokalen Zeiten die Bedingung g > pi einhalten.
+ Dies garantiert, dass der Offset zwischen zwei lokalen Clocks maximal einen Macrotick der globalen Zeit beträgt.
+ Wird diese Bedingung nicht erfüllt, kann nicht garantiert werden, dass sich zwei lokale Clock in demselben Makrotick Intervall (der globalen Clock) befinden.
+
+** 14 Grundlegende Einschränkung bei Time Measurement?
+
+ 1) Wenn ein einzelnes Event von zwei unterschiedlichen Knoten beobachtet wird, kann der Zeitstempel um einen Tick variieren.
+ Dadurch kann die zeitliche Abfolge der Events nicht wiederhergestellt werden.
+
+ 2) Wenn die betrachtete Dauer eines Intervalls d_obs ist, ist die tatsächliche Dauer des Events d_true mit der Formel
+ (d_obs - 2g) < (d_true) < (d_obs + 2g) gebunden, da die Dauer von zwei Events begrenzt wird.
+
+ 3) Die zeitliche Reihenfolge von mehreren Events kann wiederhergestellt werden, wenn die Differenz >= 2 Ticks ist.
+
+** 15 Erkläre Synchronization Condition?
+
+ Die Periode für die Resynchronisation wird als Intervall R_int bezeichnet. Bei jedem Resynchronisationspunkt werden die Clocks korrigiert.
+ Für eine Anzahl an Clocks mit einer maximalen Abweichungsrate von rho, welche sich alle R_int Intervalle synchronisieren, ist die maximale 
+ Abweisung zwischen den Clocks durch den Drift offset gamma limitiert: Gamma = 2 * rho * R_int
+
+ Wenn Theta ist die Abweichung zwischen den Clocks direkt nach der Synchronisation ist und pi die erlaubte Abweichung zwischen zwei Clocks ist, 
+ muss die Bedingung Thetha + Gamma < pi erfüllt werden. 
+
+** 16 Welcher Faktor hat den wichtigsten Einfluss auf die Präzision einer verteilten Uhrensynchronisation?
+
+ Der wichtigste Einfluss auf die Synchronisation verteilter Systeme ist der latency jitter EPSILON der Synchronisationsnachrichten, 
+ weclhe den aktuellen Zeitstempel verschickt.
+ Jitter Beispiele:
+ Application Level: 500us - 5ms
+ OS Level: 10us - 100us
+ HW Level: <10us
+
+** 17 Erkläre den FTA Algorithmus?
+
+ Der FTA (Fault-Tolerant-Average) Algorithmus ist ein Beispiel für eine fehlertolerante Synchronisationsfunktion.
+ Der Algorithmus wird verwendet, um für N Knoten k byzantinische Fehler (Byzantine error) zu tolerieren. Ein byzantinische Fehler tritt auf, 
+ wenn ein Knoten unterschiedliche Clock Zeiten an die anderen Knoten schickt, wodurch eine Inkonsistenz entsteht. Um die Synchronisation zu garantieren,
+ muss die Anzahl der Knoten N >= 3k+1 sein.
+
+ Der FTA Algorithmus sortiert die empfangenen Zeiten und ignoriert die k größten und die k kleinsten Zeiten. Aus den verbliebenen wird entweder der
+ Durchschnitt oder der Median berechnet, um die neue Zeit zu bestimmen.
+
+** 25 Erkläre den Unterschied zwischen Simple Task und Complex Task
+Simple Task (S-Task) beschreibt eine Process der keine Synchronisation
+beinhaltet. Ausführungszeit ist vorhersehbar.
+
+Complex Task (C-Task) beinhaltet mindestens eine blockierende
+Synchronisation. WCET (Worst Case Execution Time) ist schwierig zu
+berechnen.
+
+F: 1, 70
+** 26 Erkläre Worst Case Execution Time
+
+ Ist die maximale benötigte Zeit, um einen Task abzuschließen.
+ Die WCET wird anhand einer Last und Fehlerhypothese und unter
+ Berücksichtigung aller möglichen Eingabedaten berechnet.
+
+
+** 27 Welches Problem tritt auf, wenn man versucht die WCET eines Complex Task zu ermitteln?
+
+ Da der Complex Task eine blockierende Synchronisation(zB Warten auf Semaphore) beinhaltet, ist die WCET abhängig von den anderen laufenden Tasks und kann dadurch nur sehr schwer bestimmt werden.
+** 29 Erkläre Observation
+     Als Observation bezeichnet man eine "Betrachtung" eines Echtzeitsystems oder einer seiner Komponenten (RT-Entity).
+     Es können nur States (Zustände) beobachtet werden, keine Events (Wechsel eines Wertes auf einen neuen Wert). 
+     Eine Observation besteht aus drei Teilen: <Name, t_obs, Value>
+         - Name  : Name der RT Entity
+         - t_obs : Zeit der Observation (in Echtzeit)
+         - Value : Wert zu diesem Zeitpunkt
+   
+     Für ein kontinuierliches System kann eine Observation zu jedem Zeitpunkt durchgeführt werden. Für diskrete Systeme, kann
+     eine Observation nur zu den jeweiligen diskreten Zeitschritten stattfinden.
+
+     Probleme bei Event-Observation:
+         - Was ist die präziese Zeit des Events (-> tritt nicht synchron zum Takt auf)
+         - Da Events nur Werteänderungen enthalten, können Observer und Receiver die Synchronisation verlieren
+         - Da Events nur gesendet werden wenn sich Werte ändern, sind Ausfälle von Einheiten schwerer zu detektieren
+
+     F1, 79-81
+** 30 Erkläre temporal Accuracy eines RT Images
+     Die 'temporal Accuracy' (d_acc) ist die Verbindung zwischen einer RT-Entity und seines RT-Images und beschreibt,
+     wie lange das jeweilige RT-Image gültig ist. Diese Gültigkeit hängt stark von der maximalen Änderungsrate des Images 
+     ab. 
+
+     Bsp: (von den Folien)
+
+         RT Image        Änderungsrate       Required Accuracy       d_acc
+         ----------------------------------------------------------------------
+             gas pedal pos   100% / sek              1%                  10 ms
+             oil temp        10 / min                1%                  6 sek
+
+     F1, 87-89
+** 31 Wie kann der maximale Fehler in einem RT Image abgeschätzt werden? Wie erkennt man ob ein RT Image phasen-sensitiv ist?
+     Der maximale Fehler eines RT-Images kann mittels einer Gerade approoximiert werden:
+         err_max = Gradient_des_RT_Images * d_acc 
+
+     -> Der maximale Fehler ergibt sich aus der maximalen Änderung, die während einer kompletten Gültigkeitsperiode des Signals anliegen kann.
+     -> Somit muss die Gültigkeitsperiode bei schnell änderbaren RT-Images möglichst klein gehalten werden. 
+
+     F1, 90
+
+     Ein phasen-sensitives Image kann nicht zu jeder Zeit vom Processing Stack verarbeitet werden. 
+     Somit darf die maximale Verabrbeitungszeit (WCET) + die Zeit, die zum Updaten des Images benötigt wird (d_update) nicht größer sein 
+     als die temporal Accuracy (d_acc), sonst ist das Image phasen-sensitiv.
+
+     Phasen-Sensitivität sollte wenn möglich vermieden werden, was durch eine Erhöhung der Update-Frequenz (d_update wird kürzer), oder
+     durch die Verwendung eines Vorhersage-Models erreicht werden kann. Durch ein Vorhersage Model erhöht sich die die d_acc, da Werte
+     länger gültig sein können.
+
+     F1, 91-92
+** 32 Erkläre Permanenz, Action Delay
+     Permanenz ist der Zusammenhang der aktuellen Nachricht und allen anderen Nachrichten, die zuvor an den Knoten gesendet wurden.
+     Eine Nachricht wird als permanent bezeichnet, wenn alle zeitlich davor gesendeten Nachrichten angekommen sind, oder es feststeht,
+     dass die zeitlich zuvor gesendeten Nachrichten nicht mehr ankommen werden.
+
+     F1, 93
+
+     Das Action Delay, ist die Zeitspanne zwischen dem Beginn einer Übertragung und dem Zeitpunkt an dem die Nachricht beim Empfänger
+     permanent wird.
+     Beim Empfänger darf eine Nachricht erst zur Verarbeitung verwendet werden, wenn das Action Delay verstrichen ist, da sonst inkorrektes 
+     Verhalten auftreten kann.
+
+     F1, 94
+** 34 Nenne vier wichtige Anforderungen an Real-Time Communication
+     - Minimale/deterministische Protokol Latenz
+     - Multicast Datenübertragung (zb UDP) anstatt Point-to-Point (zb TCP)
+     - Composability (Zusammensetzbarkeit des Systems aus Kompnenten)
+     - Flow Control (keine Überforderten Knoten/Teilnehmer)
+     - Flexibilität um neuen Anforderungen gerechtzuwerden
+     - Fehler müssen erkannt werden und sollen möglichst selbst gelöst werden
+     - End-to-End Protokol, bei dem alle Aktionen überwacht werden können (Action + Feedback)
+
+     F2, 2-6
+** 35 Was versteht man unter impliziter bzw. expliziter Flow Control?
+     Flow Control oder Flusskontrolle regelt die Geschwindigkeit des Informationsflusses zwischen Sender und Empfänger.
+     Dabei ist immer der Empfänger, der Teilnehmen der die maximale Geschwindigkeit vorgibt.
+
+     - Explizite Flow Control:   Der Empfänger sendet ein explizites Acknowledgement Packet an den Sender, in dem er die Nachricht bestätigt.
+     - Implizite Flow Control:   Empänger und Sender legen vor der Kommunikation die Zeitpunkte/geschwindigkeiten fest, an/mit welchen
+                                 Nachrichten gesendet werden. Die Fehlererkennung übernimmt dabei der Empfänger.
+                
+     F2, 7-10
+** 36 Wie arbeitet ein PAR Protokoll?
+ [Foliensatz 2 Seite 9]
+ Die Quelle sendet die Daten zum Empfänger. Der Empfänger muss innerhalb einer definierten Zeit den Empfang der Daten bestätigen (ack).
+ Empfängt die Quelle die Bestätigung (Ack) nicht innerhalb der definierten Zeit so werden die Daten erneut gesendet.
+ War die Übertragung nach mehrmaligen Senden nicht fehlerfrei so wird die Kommunikation abgebrochen.
+
+** 37 Was versteht man unter Trashing?
+ [Foliensatz 2 Seite 11]
+ Der Durchsatz eines Systems nimmt mit zunehmender Last aprupt, drastisch ab. Dies obwohl das Resourcenlimit noch nicht erricht ist.
+
+** 38 Welche Form der Flusskontrolle ist für harte Echtzeitsysteme geeignet?
+ [Foliensatz 2 Seite 13]
+ Implicit Flow Control !!!(Bei der Antwort bin ich mir nicht ganz sicher)!!!
+
+** 39 Welchen Designwiderspruch muss man für ein Echtzeitkommunikationssystem lösen?
+ [Foliensatz 2 Seite 20]
+ Den Designwiderspruch zwischen flexibilität und Error-Handling gilt es zu lösen.
+
+** 40 Erkläre Time as data und Time as control
+ [Foliensatz 2 Seite 62]
+ Ein Ereignis, das eintritt, kann aus zwei verschiedenen Perspektiven betrachtet werden
+ -> Time as Data: Definiert den Zeitpunkt einer Wertänderung. Die Folgen des Ereignisses werden später analysiert. 
+	 Z.B.: Zeitmessung Start und Stop müssen exakt gemessen werden. Das Datum die benötigte Zeit kann später verarbeitet werden.
+ -> Time as Control: Es kann sofortiges Handeln des Computersystems verlangen, um zu einem definierten Zeitpunkt auf dieses Ereignis zu reagieren.
+	 Z.B.: Steuersignale des Zugfahrplans, die Steuersignale werden von der Zeit abgeleitet.
+
+** 41 Unterschied zwischen Syntactic und Semantic Agreement
+ [Foliensatz 2 Seite 64]
+ -> Syntactic: Der gemessenen Wert wird ohne berücksichtigung des Kontextes ermittelt
+	 Z.B.: Mittelwertberechnung
+ -> Semantic: Mehrere Sensoren messen unterschiedliche gößen, diese werden in relation zueinander gesetzt um einen gültigen Wert zu erhalten.
+	 Z.B.: Füllstandmessung eines Gefäß, einerseits über das Gewicht und andererseites per Abstand zur Inhalt.
+
+** 42: Welche 2 Vorteile hat Sampling with Memory Element?
+ Es können fehlerhafte Daten, die bei transienten Störgrößen auf der Leitung vom Sensor zur Cpu auftreten, vermieden werden.
+ Bei Abschaltung und Neustart von Knoten, kann der Sensor-Wert erneut gelesen werden.
+** 43: Nenne 4 Aspekte, die bei der physikalischen Installation zu Problemen führen können
+ - Unzureichende Abschirmung
+ - Unzureichender Temperatur abtransport
+ - Korrosion an den Steckverbidungen
+ - Unzureichnede Erdung
+** 44: Nenne zwei wichtige Anforderungen an das Task Management
+ - Steurung der Logik: Betrachtet den Control-Flow eines Tasks (Datenstruktur des programms und IOs)
+ - Zeitliche Steuerung: Starten und Blockieren eines Tasks.
+** 45: Erkläre den Unterschied zwischen S-Task und C-Task
+ - S-Task: (simple Task) EinTask der keine synchronsation erfordert und ab start bis zum termite laufen kann.
+ - C-Tsak (complex Task): Ein Task der Synchronisation erfordert (ein blocking statement enthählt, z.B. wait() bei semaphore)
+** 46: Erkläre den Unterschied zwischen impliziter und expliziter Synchronisation von Tasks
+ - Implizit: Wenn das Scheduling ordentlich design ist muss eine Zugriff auf shared Memory nicht geschützt werden, da diese sich nie überlappen.
+ - Explizit: Sicherung der shared-Memory zugriffs via Semaphore-operationen.
+** 47: Erkläre das Non-Blocking Write Protokoll
+ Hierbei gibt es nur einen Writer der nie blockiert. Der Leser vernichtet die Nachrichten nicht. Es kann vorkommen, dass der Leser inkonsistente Daten erhählt. Wenn der Leser diese Interferenz bemerkt, wird der Lesevorgang wiederholt (maximale Anzahl an Wiederholungen meißt festgelegt).
+
+** 53 Erkläre den Earliest-Deadline-First Algorithmus
+	 - Optimaler Algorithmus auf einem Single Core System.
+	 - Preemtives Scheduling --> Unterbricht Tasks.
+	 - Dynamische Prioritäten --> Können sich zur Laufzeit ändern.
+	 - Nach jedem Event wird dem Task mit der nähesten Deadline die höchste Priorität zugewiesen.
+	 - "Processor Utiliztaion" --> Ausnützung der CPU kann bis zu 1 sein!
+
+** 54 Erkläre den Least-Laxity Algorithmus
+	 - Ein weiterer optimaler Alg. auf einem Single CPU System.
+	 - Grundsätzlich gleich wie EDF, ausser ..
+	 - Der Task mit der kürzesten "Laxity" bekommt die höchste Priorität.
+	 - "Laxity" wird errechnet aus D - C --> Deadline Periode - Rechenzeit des Tasks.
+	 - Im Wesentlichen ist die "Laxity" nur die Zeit, die einem Task bis zur Deadline bleibt, nachdem er mit seiner Aufgabe fertig ist.
+
+** 55 Was ist Priority Inversion?
+	 - Beschreibt das Problem, wenn es mehrere (mind. 2) Tasks mit versch. Prioritäten gibt, und der Task mit der höchsten Priorität von dem oder den anderen "verzögert" wird.
+	 - Dieses Problem tritt auf, wenn z.B. T1 (niedrigste Prio) eine gemeinsame Ressource anfordert. T3 (höchste Prio) unterbricht ihn, kann die gemeinsame Ressource aber nicht anfordern, und deshalb läuft T2 zuerst (fertig).
+	 - T3 wird defacto erst ausgeführt, wenn T1 und T2 fertig sind.
+
+** 56 Was wird mit dem Priority Ceiling Protocol verhindert?
+	 - Wird verwendet um "Priority Inversion" und Deadlocks in Systemen zu lösen, bei denen Tasks auf gemeinsame Ressourcen zugreifen.
+	 - "Priority Ceiling" ist jener Prioritätslevel, die der Task mit der höchsten Priorität besitzt, der jemals auf die gemeinsame Ressource zu greifen wird.
+	 - Einfacher gesagt: höchste Priorität aller Tasks die auf Ressource zugreifen werden.
+	 - Wenn ein Task eine Ressource locked, dann bekommt er die "Priority Ceiling" Priorität, und kann somit von keinem anderen Task unterbrochen werden, der die selbe Ressource locken würde!
+	 - Der Task kann die "Critical Section" nun ferig abarbeiten, bekommt danach wieder seine originale Priorität.
+
+** 57 Wie funktioniert ein statischer Scheduler?
+	 - Ist ein zeitgesteuerter Scheduler, nicht EVENT gesteuert!
+	 - Reihenfolge der Tasks wird im Vorhinein festgelegt, NICHT zur Laufzeit.
+	 - Einziger Interrupt ist ein periodischer Timer der den nächsten Task startet.
+	 - Es gibt eine Periode P, Tasks können nach einer unterschiedlicher Anzahl an Perioden erneut aufgerufen werden.
+	 - Taks haben ausserdem (wie üblich) eine Rechendauer.
+	 - Z.B.: T1: p = 3 und T2: p = 6, bedeutet, dass T1 alle 3 "Zeitschritte" an die Reihe kommt, T2 alle 6 "Zeitschritte".
+	 - Aus Periode und Rechendauer der Tasks ergibt sich dann, ob es möglich ist, alle Tasks "in-time" zu schedulen.
+
+** 58 Was ist ein Mode Change?
+	 - Applikationen können verschiedene Zustände bzw. Modi haben. Z.B.: Flugzeug: "Rollen" oder "Fliegen".
+	 - Jedem dieser Zustände wir ein statisches Scheduling zugewiesen.
+	 - Bei einem Wechsel des Zustands wird auch das Scheduling gewechselt.
+	 - Dieser Wechsel ist kritisch und kann grundsätzlich nur in Grund-Zustand der Appliation ausgeführt werden.
+
+** 59 Fault-Tolerance
+
+ Die Fault-Tolerance eines Systems gibt an in wie fern Fehler im System auftreten können, ohne das dabei unvorhergesehene Ereignisse auftreten und es zu Schaden kommt.
+
+** 60 Nenne die Hauptmotivation für Fehlertoleranz
+
+ Kein einzeln auftretender Fehler soll zu Versagen des Systems führen.
+
+ Wichtig bei sicherheitsrelevanten Systemen, da es ohne zu Schaden an Leib und Leben kommen kann.
+
+ Kann auch bei nicht sicherheitsrelevanten Systemen gefordert sein um monetären und materiellen Schaden zu verhindern.
+
+** 61 Erkläre den Zusammenhang zwischen Fault, Error und 
+ Failure
+
+ Der FAULT ist die Fehlerursache/Ursprung, durch diesen kann das System in einen nicht beabsichtigten Zustand kommen -> ERROR. Durch den Verbleib in diesem Zustand weicht die Operation des Systems von der geplanten ab und es kommt zur Fehlfunktion -> FAILURE
+
+ Der FAILURE eines Subsystems kann der FAULT, also die Fehlerursache des Systems sein, welches mit diesem Subsystem interagiert.
+
+** 62 Unterschied zwischen consistent und inconsistent failure
+
+ Bei einem consistent failure Szenario erkennen alle Benutzer das ein Fehler aufgetreten ist. Bei einem inconstistent failure nicht. 
+
+ Ein fail-silent System welches nur korrekte Resulate schickt und ansonsten keine fällt dementsprechend auch in die consistent failure Kategorie.
+
+** 63 Erkläre permanent failure, transient failure und intermittent failure Wie kann ein Error korrigiert werden?
+
+ permanent:
+ Bei diesem Fehler kann die Operation des Systems erst nach der Korrekture/Reparatur des Fehlers wieder aufgenommen werden.
+
+ transient:
+ Fehler ist aufgetreten aber die Operation wird währenddessen weiter durchgeführt. Häufiger als permanente Fehler. Meist nur temporär und korrigiert sich manchmal auch wieder von alleine.
+
+ intermittent:
+ Der Fehler tritt häufig auf jedoch nicht immer. In Intervallen jeodoch irregulär.
+
+ Um einen Error zu korrigieren muss dieser zuerst erkannt werden. Der korrekte Zustand muss bekannt sein durch vorhergehendes Wissen oder vergleich von redundanten Systemen. Danach kann dieser korrigiert werden, hauptsächlich durch redundante Systeme.
+
+** 64 Welche Arten von Faults gibt es?
+
+ chance fault: zufälliger Hardware Fehler, wie Kabelbruch etc.
+
+ intentional fault: sabotage, in SW trojaner/virus
+
+ design fault: nicht beabsichtigt aber ausgelöst durch error in design. Mit strengem requirement engineering kann dem vorgebeugt werden.
+
+** 70 Warum ist ein Node als Unit of Failure geeignet
+ [Foliensatz 3 Seite 22]
+ Ein Knoten ist eine in sich geschlossene Einheit, die eine Funktion über eine definierte Schnittstelle sowie Maßnahmen zur Verhinderung der Ausbreitung von Fehlern außerhalb des Knotens (Fehlerbegrenzungsbereich) bereitstellt. 
+ Ein Ausfall eines Knotens entspricht somit dem Ausfall der Funktion des Knotens.
+
+
+** 71: Wie viele redundante Einheiten werden für fail-inconsistent Nodes benötigt um k Fehler zu tolerieren?
+ - 2*k+1 Komponenten, wenn die Knoten nur fail-inconsitent sind.
+ - 3*k+1 Komponenten, wenn die Knoten  fail-inconsitent und ein agreement zwischen den Knoten erreicht werden muss
+
+** 73 Was leistet ein Membership Service?
+	 - Liefert Aktivitäts-Informationen über Knoten in einem System.
+	 - Informationen können sein: Alter der Information, Fehler-Toleranz, Ob alle teilnehmenden Knoten dem Membership Service zustimmen oder nicht.
+	 - Beispiel: Kann dazu verwendet werden, um herauszufinden ob eine System genug Knoten zur Verfügung hat um eine spezielle Aktivität auszuführen!
+	 - Ein fehlertolerates Membership Protokoll muss mindestens 3 Mechanismens bereitstellen: Status über alle teilnehmenden Knoten sammeln, Zustimmung über den Vektor der Knoten Statuse, Verteilung des zugestimmten Knoten Status Vektor
+	 - Größtes Problem: Erkennen von Gruppierungen von Knoten (Subnetze von Knoten), welche andere Gruppierungen als "Offline" ansehen
+	 - Jene Knoten die eine Abweichung zwischen beobachteten und der tatsächlichen Membership Information erkennen, müssen annehmen dass sie fehlerhaft sind, und sich daher von der Membership Gruppe lösen.
+
+** 74 Erkläre Atomic Multicast
+
+ Dieser Service garantiert die korrekte Zustellung von Nachrichten, sowie in korrekter Reihenfolge an alle Empfänger in einer Gruppe. Im Fehlerfall werden die Nachrichten gemeinsam verworfen ohne dass es zu Nebenwirkungen im System kommt.
+
+ Wird genutzt um konsistenten Nachrichten Stream an multiple Nodes zu gewährleisten.
+
+ Variiert in:
+ Benötigte Anzahl an bestätigten Nachrichten 
+ Anzahl an tolerierten fehlerhaften Nodes
+ Zeittoleranz bis Agreement getroffen werden muss
+
+
