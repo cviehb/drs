@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-02-06 Thu 12:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Christoph Viehboeck" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgab95802">1. 1 Unterschied zwischen Hard Deadline und Soft Deadline</a></li>
+<li><a href="#org57b7c12">2. 2 Was ist ein Update Delay?</a></li>
+<li><a href="#orgd695902">3. 3 Was ist der Computer Delay?</a></li>
+<li><a href="#org743bbdd">4. 4 Warum werden Echtzeitsysteme verteilt gebaut?</a></li>
+<li><a href="#orgff8180d">5. 5 Unterschied zwischen State Information und Event Information?</a></li>
+<li><a href="#org806b559">6. 6 Unterschied zwischen Autonomous Control und External Control?</a></li>
+<li><a href="#org397f9bd">7. 7 Unterschied zwischen Temporal Order und Causal Order?</a></li>
+<li><a href="#org7f64145">8. 8 Wie ist eine Physical Clock definiert?</a></li>
+<li><a href="#orgf423f05">9. 9 Erkläre Microtick, Macrotick, Granularity</a></li>
+<li><a href="#org57c8753">10. 10 Erkläre Reference Clock</a></li>
+<li><a href="#org9705188">11. 11 Erkläre Clock Drift</a></li>
+<li><a href="#orga3e4458">12. 12 Erkläre Accuracy und Precision</a></li>
+<li><a href="#orgc9f8ead">13. 13 Erkläre Reasonableness Condition. Was passiert, wenn diese Bedingung nicht eingehalten wird?</a></li>
+<li><a href="#org0757e71">14. 14 Grundlegende Einschränkung bei Time Measurement?</a></li>
+<li><a href="#orgfd6be1e">15. 15 Erkläre Synchronization Condition?</a></li>
+<li><a href="#orgc7812ae">16. 16 Welcher Faktor hat den wichtigsten Einfluss auf die Präzision einer verteilten Uhrensynchronisation?</a></li>
+<li><a href="#orge59463c">17. 17 Erkläre den FTA Algorithmus?</a></li>
+<li><a href="#org7bb5d4a">18. 25 Erkläre den Unterschied zwischen Simple Task und Complex Task</a></li>
+<li><a href="#orgbb49f65">19. 26 Erkläre Worst Case Execution Time</a></li>
+<li><a href="#orgf43b2e8">20. 27 Welches Problem tritt auf, wenn man versucht die WCET eines Complex Task zu ermitteln?</a></li>
+<li><a href="#org1c2d01f">21. 29 Erkläre Observation</a></li>
+<li><a href="#org95171dd">22. 30 Erkläre temporal Accuracy eines RT Images</a></li>
+<li><a href="#orgedf792b">23. 31 Wie kann der maximale Fehler in einem RT Image abgeschätzt werden? Wie erkennt man ob ein RT Image phasen-sensitiv ist?</a></li>
+<li><a href="#org9610767">24. 32 Erkläre Permanenz, Action Delay</a></li>
+<li><a href="#org20bd52c">25. 34 Nenne vier wichtige Anforderungen an Real-Time Communication</a></li>
+<li><a href="#orgfbc974b">26. 35 Was versteht man unter impliziter bzw. expliziter Flow Control?</a></li>
+<li><a href="#orge027862">27. 36 Wie arbeitet ein PAR Protokoll?</a></li>
+<li><a href="#org81d7ce6">28. 37 Was versteht man unter Trashing?</a></li>
+<li><a href="#orgde850ba">29. 38 Welche Form der Flusskontrolle ist für harte Echtzeitsysteme geeignet?</a></li>
+<li><a href="#orga757605">30. 39 Welchen Designwiderspruch muss man für ein Echtzeitkommunikationssystem lösen?</a></li>
+<li><a href="#org5ebd744">31. 40 Erkläre Time as data und Time as control</a></li>
+<li><a href="#orgb9b6783">32. 41 Unterschied zwischen Syntactic und Semantic Agreement</a></li>
+<li><a href="#orgdf62f49">33. 42: Welche 2 Vorteile hat Sampling with Memory Element?</a></li>
+<li><a href="#org662a38f">34. 43: Nenne 4 Aspekte, die bei der physikalischen Installation zu Problemen führen können</a></li>
+<li><a href="#orga1e914a">35. 44: Nenne zwei wichtige Anforderungen an das Task Management</a></li>
+<li><a href="#org4752c1c">36. 45: Erkläre den Unterschied zwischen S-Task und C-Task</a></li>
+<li><a href="#org1a1f4fe">37. 46: Erkläre den Unterschied zwischen impliziter und expliziter Synchronisation von Tasks</a></li>
+<li><a href="#orgb1faa63">38. 47: Erkläre das Non-Blocking Write Protokoll</a></li>
+<li><a href="#org9218e45">39. 53 Erkläre den Earliest-Deadline-First Algorithmus</a></li>
+<li><a href="#orgad1befd">40. 54 Erkläre den Least-Laxity Algorithmus</a></li>
+<li><a href="#org55e7c64">41. 55 Was ist Priority Inversion?</a></li>
+<li><a href="#orgb8428fc">42. 56 Was wird mit dem Priority Ceiling Protocol verhindert?</a></li>
+<li><a href="#org593d400">43. 57 Wie funktioniert ein statischer Scheduler?</a></li>
+<li><a href="#orgc443a0c">44. 58 Was ist ein Mode Change?</a></li>
+<li><a href="#org69eaf11">45. 59 Fault-Tolerance</a></li>
+<li><a href="#orgdb0b317">46. 60 Nenne die Hauptmotivation für Fehlertoleranz</a></li>
+<li><a href="#orgdcdc195">47. 61 Erkläre den Zusammenhang zwischen Fault, Error und</a></li>
+<li><a href="#orgd0f08be">48. 62 Unterschied zwischen consistent und inconsistent failure</a></li>
+<li><a href="#org1375944">49. 63 Erkläre permanent failure, transient failure und intermittent failure Wie kann ein Error korrigiert werden?</a></li>
+<li><a href="#org9ca178e">50. 64 Welche Arten von Faults gibt es?</a></li>
+<li><a href="#orgd86bd45">51. 70 Warum ist ein Node als Unit of Failure geeignet</a></li>
+<li><a href="#org46e6bd6">52. 71: Wie viele redundante Einheiten werden für fail-inconsistent Nodes benötigt um k Fehler zu tolerieren?</a></li>
+<li><a href="#org84d46c9">53. 73 Was leistet ein Membership Service?</a></li>
+<li><a href="#orgdbdacd8">54. 74 Erkläre Atomic Multicast</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab95802" class="outline-2">
+<h2 id="orgab95802"><span class="section-number-2">1</span> 1 Unterschied zwischen Hard Deadline und Soft Deadline</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Hard Deadline, Zeitschranke muss eingehalten werden, Datenpakete sind
+klein und nur kurz gültig.
+</p>
+
+<p>
+Soft Deadline, Zeitschranke muss so gut wie möglich eingehalten
+werden, große datenmengen und gültigkeit sowie keine automatische
+Fehlererkennung.
+</p>
+
+<p>
+F: 1, 21
+</p>
+</div>
+</div>
+<div id="outline-container-org57b7c12" class="outline-2">
+<h2 id="org57b7c12"><span class="section-number-2">2</span> 2 Was ist ein Update Delay?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Bezeichnet die Zeit von der Aufnahme eines Physikalischen Wertes und
+dem Update der Abbildung im Echtzeitsystem.
+</p>
+
+<p>
+F: 1, 82
+</p>
+</div>
+</div>
+<div id="outline-container-orgd695902" class="outline-2">
+<h2 id="orgd695902"><span class="section-number-2">3</span> 3 Was ist der Computer Delay?</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Bezeichnet den Zeitintervall zwischen dem Sample eines Eingangswertes
+und der Reaktion des Computers mit einem Ausgangswert.
+</p>
+
+<p>
+F: 1, 82
+</p>
+</div>
+</div>
+<div id="outline-container-org743bbdd" class="outline-2">
+<h2 id="org743bbdd"><span class="section-number-2">4</span> 4 Warum werden Echtzeitsysteme verteilt gebaut?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Gründe um ein System verteilt aufzubauen:
+</p>
+
+<ol class="org-ol">
+<li>Reduktion der Komplexität</li>
+<li>Möglichkeit zur Skalierung des Systems</li>
+<li>erhöhte Zuverlässigkeit</li>
+</ol>
+
+<p>
+F: 1, 6
+</p>
+</div>
+</div>
+<div id="outline-container-orgff8180d" class="outline-2">
+<h2 id="orgff8180d"><span class="section-number-2">5</span> 5 Unterschied zwischen State Information und Event Information?</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Der State ist die Information eines Zustandes einer RT Entity
+(Physikalischer Wert, Temperatur). Ein Event kann nicht beobachtet
+werden und bezeichnet die Änderung eines States.
+</p>
+
+
+<div class="figure">
+<p><img src="./state_event_information.png" alt="state_event_information.png" />
+</p>
+</div>
+
+<p>
+F: 1, 79
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org806b559" class="outline-2">
+<h2 id="org806b559"><span class="section-number-2">6</span> 6 Unterschied zwischen Autonomous Control und External Control?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Die Entscheidung, wann eine Nachricht gesendet werden muss, kann vom
+Host-Computer (External Control) oder vom Kommunikationssystem 
+(Autonomous Control) gesteuert werden.
+</p>
+
+<p>
+Bei External Control wird das Send-Kommando vom Host getriggert um das 
+Senden einer Nachricht auszulösen. Beim Empfänger erfolgt ein Interrupt
+wenn das Paket empfangen wird. (Eventbasierte Systeme)
+</p>
+
+<p>
+Bei Autonomous Control existiert ein Zeitslot um Nachrichten zu senden und
+empfangen. Dies wird in Zeitgesteuerten Systemen eingesetzt.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org397f9bd" class="outline-2">
+<h2 id="org397f9bd"><span class="section-number-2">7</span> 7 Unterschied zwischen Temporal Order und Causal Order?</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Temporal Order: Werden bspw. Events bei allen Teilnehmern in der selben
+				Reihenfolge verarbeitet, wie sie aufgetreten sind, wird
+				dies Temporal Order genannt. Dies kann durch eine globale
+				Zeitbasis und darauf basierenden Zeitstempel für jedes Event
+				realisiert werden.
+				(Die Events müssen nicht voneinander abhängen)
+</p>
+
+
+<p>
+Causal Order: 	In real-time Applikationen sind die kausalen Abhängigkeiten 
+				von Events von Interesse. Dafür ist die Temporal Order nötig,
+				aber nicht ausreichend. Causal order ist mehr als temporal order.
+				Ein Event hängt von einem zuvor ausgelösten Event ab.
+				(Event A kann nur Event B verursacht haben, wenn A vor B aufgetreten ist)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f64145" class="outline-2">
+<h2 id="org7f64145"><span class="section-number-2">8</span> 8 Wie ist eine Physical Clock definiert?</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Eine Physical Clock ist ein Element um Zeit zu messen. Es beinhaltet einen 
+Zähler und einen oszillierenden Mechanismus, welcher periodisch ein Event 
+generiert und den Zähler inkrementiert.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf423f05" class="outline-2">
+<h2 id="orgf423f05"><span class="section-number-2">9</span> 9 Erkläre Microtick, Macrotick, Granularity</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Microtick: Das periodische Event der Physical Clock ist als microtick definiert.
+</p>
+
+<p>
+Macrotick: Jeder n-te Microtick. Wird zur Darstellung der Globalen Zeit verwendet.
+</p>
+
+<p>
+Granularity: 	Die Zeitdauer zwischen zwei aufeinanderfolgenden Microticks
+				ist die Granularität.  
+</p>
+</div>
+</div>
+
+<div id="outline-container-org57c8753" class="outline-2">
+<h2 id="org57c8753"><span class="section-number-2">10</span> 10 Erkläre Reference Clock</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Eine einzigartige Referenzzeit Z mit der Frequenz f, 
+welche perfekt auf die Internationale Standard Zeit abgestimmt ist. 
+</p>
+
+<p>
+Dadurch, dass die Referenzzeit nur einmal vorhanden ist, kann jedes Event mit
+einem absoluten Zeitstempel versehen werden.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9705188" class="outline-2">
+<h2 id="org9705188"><span class="section-number-2">11</span> 11 Erkläre Clock Drift</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Der unterschied zwischen der physical clock und der reference clock. 
+Wird durch die Drift Rate dargestellt
+perfect clock: drift rate = 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga3e4458" class="outline-2">
+<h2 id="orga3e4458"><span class="section-number-2">12</span> 12 Erkläre Accuracy und Precision</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Precision:
+    Maximaler offset zwischen zwei beliebiegen Clocks.
+Accuracy:
+    Maximaler offset einer Clock zu der externen Zeit Referenz.
+</p>
+
+<p>
+TODO: Bild precision.PNG
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9f8ead" class="outline-2">
+<h2 id="orgc9f8ead"><span class="section-number-2">13</span> 13 Erkläre Reasonableness Condition. Was passiert, wenn diese Bedingung nicht eingehalten wird?</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Eine globale Zeit wird als reasonable bezeichnet, wenn alle lokalen Zeiten die Bedingung g &gt; pi einhalten.
+Dies garantiert, dass der Offset zwischen zwei lokalen Clocks maximal einen Macrotick der globalen Zeit beträgt.
+Wird diese Bedingung nicht erfüllt, kann nicht garantiert werden, dass sich zwei lokale Clock in demselben Makrotick Intervall (der globalen Clock) befinden.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0757e71" class="outline-2">
+<h2 id="org0757e71"><span class="section-number-2">14</span> 14 Grundlegende Einschränkung bei Time Measurement?</h2>
+<div class="outline-text-2" id="text-14">
+<ol class="org-ol">
+<li>Wenn ein einzelnes Event von zwei unterschiedlichen Knoten beobachtet wird, kann der Zeitstempel um einen Tick variieren.</li>
+</ol>
+<p>
+Dadurch kann die zeitliche Abfolge der Events nicht wiederhergestellt werden.
+</p>
+
+<ol class="org-ol">
+<li>Wenn die betrachtete Dauer eines Intervalls d<sub>obs</sub> ist, ist die tatsächliche Dauer des Events d<sub>true</sub> mit der Formel</li>
+</ol>
+<p>
+(d<sub>obs</sub> - 2g) &lt; (d<sub>true</sub>) &lt; (d<sub>obs</sub> + 2g) gebunden, da die Dauer von zwei Events begrenzt wird.
+</p>
+
+<ol class="org-ol">
+<li>Die zeitliche Reihenfolge von mehreren Events kann wiederhergestellt werden, wenn die Differenz &gt;= 2 Ticks ist.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgfd6be1e" class="outline-2">
+<h2 id="orgfd6be1e"><span class="section-number-2">15</span> 15 Erkläre Synchronization Condition?</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+Die Periode für die Resynchronisation wird als Intervall R<sub>int</sub> bezeichnet. Bei jedem Resynchronisationspunkt werden die Clocks korrigiert.
+Für eine Anzahl an Clocks mit einer maximalen Abweichungsrate von rho, welche sich alle R<sub>int</sub> Intervalle synchronisieren, ist die maximale 
+Abweisung zwischen den Clocks durch den Drift offset gamma limitiert: Gamma = 2 * rho * R<sub>int</sub>
+</p>
+
+<p>
+Wenn Theta ist die Abweichung zwischen den Clocks direkt nach der Synchronisation ist und pi die erlaubte Abweichung zwischen zwei Clocks ist, 
+muss die Bedingung Thetha + Gamma &lt; pi erfüllt werden. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc7812ae" class="outline-2">
+<h2 id="orgc7812ae"><span class="section-number-2">16</span> 16 Welcher Faktor hat den wichtigsten Einfluss auf die Präzision einer verteilten Uhrensynchronisation?</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+Der wichtigste Einfluss auf die Synchronisation verteilter Systeme ist der latency jitter EPSILON der Synchronisationsnachrichten, 
+weclhe den aktuellen Zeitstempel verschickt.
+Jitter Beispiele:
+Application Level: 500us - 5ms
+OS Level: 10us - 100us
+HW Level: &lt;10us
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge59463c" class="outline-2">
+<h2 id="orge59463c"><span class="section-number-2">17</span> 17 Erkläre den FTA Algorithmus?</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+Der FTA (Fault-Tolerant-Average) Algorithmus ist ein Beispiel für eine fehlertolerante Synchronisationsfunktion.
+Der Algorithmus wird verwendet, um für N Knoten k byzantinische Fehler (Byzantine error) zu tolerieren. Ein byzantinische Fehler tritt auf, 
+wenn ein Knoten unterschiedliche Clock Zeiten an die anderen Knoten schickt, wodurch eine Inkonsistenz entsteht. Um die Synchronisation zu garantieren,
+muss die Anzahl der Knoten N &gt;= 3k+1 sein.
+</p>
+
+<p>
+Der FTA Algorithmus sortiert die empfangenen Zeiten und ignoriert die k größten und die k kleinsten Zeiten. Aus den verbliebenen wird entweder der
+Durchschnitt oder der Median berechnet, um die neue Zeit zu bestimmen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7bb5d4a" class="outline-2">
+<h2 id="org7bb5d4a"><span class="section-number-2">18</span> 25 Erkläre den Unterschied zwischen Simple Task und Complex Task</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+Simple Task (S-Task) beschreibt eine Process der keine Synchronisation
+beinhaltet. Ausführungszeit ist vorhersehbar.
+</p>
+
+<p>
+Complex Task (C-Task) beinhaltet mindestens eine blockierende
+Synchronisation. WCET (Worst Case Execution Time) ist schwierig zu
+berechnen.
+</p>
+
+<p>
+F: 1, 70
+</p>
+</div>
+</div>
+<div id="outline-container-orgbb49f65" class="outline-2">
+<h2 id="orgbb49f65"><span class="section-number-2">19</span> 26 Erkläre Worst Case Execution Time</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+Ist die maximale benötigte Zeit, um einen Task abzuschließen.
+Die WCET wird anhand einer Last und Fehlerhypothese und unter
+Berücksichtigung aller möglichen Eingabedaten berechnet.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgf43b2e8" class="outline-2">
+<h2 id="orgf43b2e8"><span class="section-number-2">20</span> 27 Welches Problem tritt auf, wenn man versucht die WCET eines Complex Task zu ermitteln?</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+Da der Complex Task eine blockierende Synchronisation(zB Warten auf Semaphore) beinhaltet, ist die WCET abhängig von den anderen laufenden Tasks und kann dadurch nur sehr schwer bestimmt werden.
+</p>
+</div>
+</div>
+<div id="outline-container-org1c2d01f" class="outline-2">
+<h2 id="org1c2d01f"><span class="section-number-2">21</span> 29 Erkläre Observation</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+Als Observation bezeichnet man eine "Betrachtung" eines Echtzeitsystems oder einer seiner Komponenten (RT-Entity).
+Es können nur States (Zustände) beobachtet werden, keine Events (Wechsel eines Wertes auf einen neuen Wert). 
+Eine Observation besteht aus drei Teilen: &lt;Name, t<sub>obs</sub>, Value&gt;
+</p>
+<ul class="org-ul">
+<li>Name  : Name der RT Entity</li>
+<li>t<sub>obs</sub> : Zeit der Observation (in Echtzeit)</li>
+<li>Value : Wert zu diesem Zeitpunkt</li>
+</ul>
+
+<p>
+Für ein kontinuierliches System kann eine Observation zu jedem Zeitpunkt durchgeführt werden. Für diskrete Systeme, kann
+eine Observation nur zu den jeweiligen diskreten Zeitschritten stattfinden.
+</p>
+
+<p>
+Probleme bei Event-Observation:
+</p>
+<ul class="org-ul">
+<li>Was ist die präziese Zeit des Events (-&gt; tritt nicht synchron zum Takt auf)</li>
+<li>Da Events nur Werteänderungen enthalten, können Observer und Receiver die Synchronisation verlieren</li>
+<li>Da Events nur gesendet werden wenn sich Werte ändern, sind Ausfälle von Einheiten schwerer zu detektieren</li>
+</ul>
+
+<p>
+F1, 79-81
+</p>
+</div>
+</div>
+<div id="outline-container-org95171dd" class="outline-2">
+<h2 id="org95171dd"><span class="section-number-2">22</span> 30 Erkläre temporal Accuracy eines RT Images</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+Die 'temporal Accuracy' (d<sub>acc</sub>) ist die Verbindung zwischen einer RT-Entity und seines RT-Images und beschreibt,
+wie lange das jeweilige RT-Image gültig ist. Diese Gültigkeit hängt stark von der maximalen Änderungsrate des Images 
+ab. 
+</p>
+
+<p>
+Bsp: (von den Folien)
+</p>
+
+<p>
+RT Image        Änderungsrate       Required Accuracy       d<sub>acc</sub>
+</p>
+<hr />
+<p>
+gas pedal pos   100% / sek              1%                  10 ms
+oil temp        10 / min                1%                  6 sek
+</p>
+
+<p>
+F1, 87-89
+</p>
+</div>
+</div>
+<div id="outline-container-orgedf792b" class="outline-2">
+<h2 id="orgedf792b"><span class="section-number-2">23</span> 31 Wie kann der maximale Fehler in einem RT Image abgeschätzt werden? Wie erkennt man ob ein RT Image phasen-sensitiv ist?</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+Der maximale Fehler eines RT-Images kann mittels einer Gerade approoximiert werden:
+    err<sub>max</sub> = Gradient<sub>des</sub><sub>RT</sub><sub>Images</sub> * d<sub>acc</sub> 
+</p>
+
+<p>
+-&gt; Der maximale Fehler ergibt sich aus der maximalen Änderung, die während einer kompletten Gültigkeitsperiode des Signals anliegen kann.
+-&gt; Somit muss die Gültigkeitsperiode bei schnell änderbaren RT-Images möglichst klein gehalten werden. 
+</p>
+
+<p>
+F1, 90
+</p>
+
+<p>
+Ein phasen-sensitives Image kann nicht zu jeder Zeit vom Processing Stack verarbeitet werden. 
+Somit darf die maximale Verabrbeitungszeit (WCET) + die Zeit, die zum Updaten des Images benötigt wird (d<sub>update</sub>) nicht größer sein 
+als die temporal Accuracy (d<sub>acc</sub>), sonst ist das Image phasen-sensitiv.
+</p>
+
+<p>
+Phasen-Sensitivität sollte wenn möglich vermieden werden, was durch eine Erhöhung der Update-Frequenz (d<sub>update</sub> wird kürzer), oder
+durch die Verwendung eines Vorhersage-Models erreicht werden kann. Durch ein Vorhersage Model erhöht sich die die d<sub>acc</sub>, da Werte
+länger gültig sein können.
+</p>
+
+<p>
+F1, 91-92
+</p>
+</div>
+</div>
+<div id="outline-container-org9610767" class="outline-2">
+<h2 id="org9610767"><span class="section-number-2">24</span> 32 Erkläre Permanenz, Action Delay</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+Permanenz ist der Zusammenhang der aktuellen Nachricht und allen anderen Nachrichten, die zuvor an den Knoten gesendet wurden.
+Eine Nachricht wird als permanent bezeichnet, wenn alle zeitlich davor gesendeten Nachrichten angekommen sind, oder es feststeht,
+dass die zeitlich zuvor gesendeten Nachrichten nicht mehr ankommen werden.
+</p>
+
+<p>
+F1, 93
+</p>
+
+<p>
+Das Action Delay, ist die Zeitspanne zwischen dem Beginn einer Übertragung und dem Zeitpunkt an dem die Nachricht beim Empfänger
+permanent wird.
+Beim Empfänger darf eine Nachricht erst zur Verarbeitung verwendet werden, wenn das Action Delay verstrichen ist, da sonst inkorrektes 
+Verhalten auftreten kann.
+</p>
+
+<p>
+F1, 94
+</p>
+</div>
+</div>
+<div id="outline-container-org20bd52c" class="outline-2">
+<h2 id="org20bd52c"><span class="section-number-2">25</span> 34 Nenne vier wichtige Anforderungen an Real-Time Communication</h2>
+<div class="outline-text-2" id="text-25">
+<ul class="org-ul">
+<li>Minimale/deterministische Protokol Latenz</li>
+<li>Multicast Datenübertragung (zb UDP) anstatt Point-to-Point (zb TCP)</li>
+<li>Composability (Zusammensetzbarkeit des Systems aus Kompnenten)</li>
+<li>Flow Control (keine Überforderten Knoten/Teilnehmer)</li>
+<li>Flexibilität um neuen Anforderungen gerechtzuwerden</li>
+<li>Fehler müssen erkannt werden und sollen möglichst selbst gelöst werden</li>
+<li>End-to-End Protokol, bei dem alle Aktionen überwacht werden können (Action + Feedback)</li>
+</ul>
+
+<p>
+F2, 2-6
+</p>
+</div>
+</div>
+<div id="outline-container-orgfbc974b" class="outline-2">
+<h2 id="orgfbc974b"><span class="section-number-2">26</span> 35 Was versteht man unter impliziter bzw. expliziter Flow Control?</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+Flow Control oder Flusskontrolle regelt die Geschwindigkeit des Informationsflusses zwischen Sender und Empfänger.
+Dabei ist immer der Empfänger, der Teilnehmen der die maximale Geschwindigkeit vorgibt.
+</p>
+
+<ul class="org-ul">
+<li>Explizite Flow Control:   Der Empfänger sendet ein explizites Acknowledgement Packet an den Sender, in dem er die Nachricht bestätigt.</li>
+<li>Implizite Flow Control:   Empänger und Sender legen vor der Kommunikation die Zeitpunkte/geschwindigkeiten fest, an/mit welchen
+Nachrichten gesendet werden. Die Fehlererkennung übernimmt dabei der Empfänger.</li>
+</ul>
+
+<p>
+F2, 7-10
+</p>
+</div>
+</div>
+<div id="outline-container-orge027862" class="outline-2">
+<h2 id="orge027862"><span class="section-number-2">27</span> 36 Wie arbeitet ein PAR Protokoll?</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+[Foliensatz 2 Seite 9]
+Die Quelle sendet die Daten zum Empfänger. Der Empfänger muss innerhalb einer definierten Zeit den Empfang der Daten bestätigen (ack).
+Empfängt die Quelle die Bestätigung (Ack) nicht innerhalb der definierten Zeit so werden die Daten erneut gesendet.
+War die Übertragung nach mehrmaligen Senden nicht fehlerfrei so wird die Kommunikation abgebrochen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org81d7ce6" class="outline-2">
+<h2 id="org81d7ce6"><span class="section-number-2">28</span> 37 Was versteht man unter Trashing?</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+[Foliensatz 2 Seite 11]
+Der Durchsatz eines Systems nimmt mit zunehmender Last aprupt, drastisch ab. Dies obwohl das Resourcenlimit noch nicht erricht ist.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgde850ba" class="outline-2">
+<h2 id="orgde850ba"><span class="section-number-2">29</span> 38 Welche Form der Flusskontrolle ist für harte Echtzeitsysteme geeignet?</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+[Foliensatz 2 Seite 13]
+Implicit Flow Control !!!(Bei der Antwort bin ich mir nicht ganz sicher)!!!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga757605" class="outline-2">
+<h2 id="orga757605"><span class="section-number-2">30</span> 39 Welchen Designwiderspruch muss man für ein Echtzeitkommunikationssystem lösen?</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+[Foliensatz 2 Seite 20]
+Den Designwiderspruch zwischen flexibilität und Error-Handling gilt es zu lösen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5ebd744" class="outline-2">
+<h2 id="org5ebd744"><span class="section-number-2">31</span> 40 Erkläre Time as data und Time as control</h2>
+<div class="outline-text-2" id="text-31">
+<p>
+[Foliensatz 2 Seite 62]
+Ein Ereignis, das eintritt, kann aus zwei verschiedenen Perspektiven betrachtet werden
+-&gt; Time as Data: Definiert den Zeitpunkt einer Wertänderung. Die Folgen des Ereignisses werden später analysiert. 
+	Z.B.: Zeitmessung Start und Stop müssen exakt gemessen werden. Das Datum die benötigte Zeit kann später verarbeitet werden.
+-&gt; Time as Control: Es kann sofortiges Handeln des Computersystems verlangen, um zu einem definierten Zeitpunkt auf dieses Ereignis zu reagieren.
+	Z.B.: Steuersignale des Zugfahrplans, die Steuersignale werden von der Zeit abgeleitet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb9b6783" class="outline-2">
+<h2 id="orgb9b6783"><span class="section-number-2">32</span> 41 Unterschied zwischen Syntactic und Semantic Agreement</h2>
+<div class="outline-text-2" id="text-32">
+<p>
+[Foliensatz 2 Seite 64]
+-&gt; Syntactic: Der gemessenen Wert wird ohne berücksichtigung des Kontextes ermittelt
+	Z.B.: Mittelwertberechnung
+-&gt; Semantic: Mehrere Sensoren messen unterschiedliche gößen, diese werden in relation zueinander gesetzt um einen gültigen Wert zu erhalten.
+	Z.B.: Füllstandmessung eines Gefäß, einerseits über das Gewicht und andererseites per Abstand zur Inhalt.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdf62f49" class="outline-2">
+<h2 id="orgdf62f49"><span class="section-number-2">33</span> 42: Welche 2 Vorteile hat Sampling with Memory Element?</h2>
+<div class="outline-text-2" id="text-33">
+<p>
+Es können fehlerhafte Daten, die bei transienten Störgrößen auf der Leitung vom Sensor zur Cpu auftreten, vermieden werden.
+Bei Abschaltung und Neustart von Knoten, kann der Sensor-Wert erneut gelesen werden.
+</p>
+</div>
+</div>
+<div id="outline-container-org662a38f" class="outline-2">
+<h2 id="org662a38f"><span class="section-number-2">34</span> 43: Nenne 4 Aspekte, die bei der physikalischen Installation zu Problemen führen können</h2>
+<div class="outline-text-2" id="text-34">
+<ul class="org-ul">
+<li>Unzureichende Abschirmung</li>
+<li>Unzureichender Temperatur abtransport</li>
+<li>Korrosion an den Steckverbidungen</li>
+<li>Unzureichnede Erdung</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga1e914a" class="outline-2">
+<h2 id="orga1e914a"><span class="section-number-2">35</span> 44: Nenne zwei wichtige Anforderungen an das Task Management</h2>
+<div class="outline-text-2" id="text-35">
+<ul class="org-ul">
+<li>Steurung der Logik: Betrachtet den Control-Flow eines Tasks (Datenstruktur des programms und IOs)</li>
+<li>Zeitliche Steuerung: Starten und Blockieren eines Tasks.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4752c1c" class="outline-2">
+<h2 id="org4752c1c"><span class="section-number-2">36</span> 45: Erkläre den Unterschied zwischen S-Task und C-Task</h2>
+<div class="outline-text-2" id="text-36">
+<ul class="org-ul">
+<li>S-Task: (simple Task) EinTask der keine synchronsation erfordert und ab start bis zum termite laufen kann.</li>
+<li>C-Tsak (complex Task): Ein Task der Synchronisation erfordert (ein blocking statement enthählt, z.B. wait() bei semaphore)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1a1f4fe" class="outline-2">
+<h2 id="org1a1f4fe"><span class="section-number-2">37</span> 46: Erkläre den Unterschied zwischen impliziter und expliziter Synchronisation von Tasks</h2>
+<div class="outline-text-2" id="text-37">
+<ul class="org-ul">
+<li>Implizit: Wenn das Scheduling ordentlich design ist muss eine Zugriff auf shared Memory nicht geschützt werden, da diese sich nie überlappen.</li>
+<li>Explizit: Sicherung der shared-Memory zugriffs via Semaphore-operationen.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb1faa63" class="outline-2">
+<h2 id="orgb1faa63"><span class="section-number-2">38</span> 47: Erkläre das Non-Blocking Write Protokoll</h2>
+<div class="outline-text-2" id="text-38">
+<p>
+Hierbei gibt es nur einen Writer der nie blockiert. Der Leser vernichtet die Nachrichten nicht. Es kann vorkommen, dass der Leser inkonsistente Daten erhählt. Wenn der Leser diese Interferenz bemerkt, wird der Lesevorgang wiederholt (maximale Anzahl an Wiederholungen meißt festgelegt).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9218e45" class="outline-2">
+<h2 id="org9218e45"><span class="section-number-2">39</span> 53 Erkläre den Earliest-Deadline-First Algorithmus</h2>
+<div class="outline-text-2" id="text-39">
+<ul class="org-ul">
+<li>Optimaler Algorithmus auf einem Single Core System.</li>
+<li>Preemtives Scheduling &#x2013;&gt; Unterbricht Tasks.</li>
+<li>Dynamische Prioritäten &#x2013;&gt; Können sich zur Laufzeit ändern.</li>
+<li>Nach jedem Event wird dem Task mit der nähesten Deadline die höchste Priorität zugewiesen.</li>
+<li>"Processor Utiliztaion" &#x2013;&gt; Ausnützung der CPU kann bis zu 1 sein!</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad1befd" class="outline-2">
+<h2 id="orgad1befd"><span class="section-number-2">40</span> 54 Erkläre den Least-Laxity Algorithmus</h2>
+<div class="outline-text-2" id="text-40">
+<ul class="org-ul">
+<li>Ein weiterer optimaler Alg. auf einem Single CPU System.</li>
+<li>Grundsätzlich gleich wie EDF, ausser ..</li>
+<li>Der Task mit der kürzesten "Laxity" bekommt die höchste Priorität.</li>
+<li>"Laxity" wird errechnet aus D - C &#x2013;&gt; Deadline Periode - Rechenzeit des Tasks.</li>
+<li>Im Wesentlichen ist die "Laxity" nur die Zeit, die einem Task bis zur Deadline bleibt, nachdem er mit seiner Aufgabe fertig ist.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org55e7c64" class="outline-2">
+<h2 id="org55e7c64"><span class="section-number-2">41</span> 55 Was ist Priority Inversion?</h2>
+<div class="outline-text-2" id="text-41">
+<ul class="org-ul">
+<li>Beschreibt das Problem, wenn es mehrere (mind. 2) Tasks mit versch. Prioritäten gibt, und der Task mit der höchsten Priorität von dem oder den anderen "verzögert" wird.</li>
+<li>Dieses Problem tritt auf, wenn z.B. T1 (niedrigste Prio) eine gemeinsame Ressource anfordert. T3 (höchste Prio) unterbricht ihn, kann die gemeinsame Ressource aber nicht anfordern, und deshalb läuft T2 zuerst (fertig).</li>
+<li>T3 wird defacto erst ausgeführt, wenn T1 und T2 fertig sind.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb8428fc" class="outline-2">
+<h2 id="orgb8428fc"><span class="section-number-2">42</span> 56 Was wird mit dem Priority Ceiling Protocol verhindert?</h2>
+<div class="outline-text-2" id="text-42">
+<ul class="org-ul">
+<li>Wird verwendet um "Priority Inversion" und Deadlocks in Systemen zu lösen, bei denen Tasks auf gemeinsame Ressourcen zugreifen.</li>
+<li>"Priority Ceiling" ist jener Prioritätslevel, die der Task mit der höchsten Priorität besitzt, der jemals auf die gemeinsame Ressource zu greifen wird.</li>
+<li>Einfacher gesagt: höchste Priorität aller Tasks die auf Ressource zugreifen werden.</li>
+<li>Wenn ein Task eine Ressource locked, dann bekommt er die "Priority Ceiling" Priorität, und kann somit von keinem anderen Task unterbrochen werden, der die selbe Ressource locken würde!</li>
+<li>Der Task kann die "Critical Section" nun ferig abarbeiten, bekommt danach wieder seine originale Priorität.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org593d400" class="outline-2">
+<h2 id="org593d400"><span class="section-number-2">43</span> 57 Wie funktioniert ein statischer Scheduler?</h2>
+<div class="outline-text-2" id="text-43">
+<ul class="org-ul">
+<li>Ist ein zeitgesteuerter Scheduler, nicht EVENT gesteuert!</li>
+<li>Reihenfolge der Tasks wird im Vorhinein festgelegt, NICHT zur Laufzeit.</li>
+<li>Einziger Interrupt ist ein periodischer Timer der den nächsten Task startet.</li>
+<li>Es gibt eine Periode P, Tasks können nach einer unterschiedlicher Anzahl an Perioden erneut aufgerufen werden.</li>
+<li>Taks haben ausserdem (wie üblich) eine Rechendauer.</li>
+<li>Z.B.: T1: p = 3 und T2: p = 6, bedeutet, dass T1 alle 3 "Zeitschritte" an die Reihe kommt, T2 alle 6 "Zeitschritte".</li>
+<li>Aus Periode und Rechendauer der Tasks ergibt sich dann, ob es möglich ist, alle Tasks "in-time" zu schedulen.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc443a0c" class="outline-2">
+<h2 id="orgc443a0c"><span class="section-number-2">44</span> 58 Was ist ein Mode Change?</h2>
+<div class="outline-text-2" id="text-44">
+<ul class="org-ul">
+<li>Applikationen können verschiedene Zustände bzw. Modi haben. Z.B.: Flugzeug: "Rollen" oder "Fliegen".</li>
+<li>Jedem dieser Zustände wir ein statisches Scheduling zugewiesen.</li>
+<li>Bei einem Wechsel des Zustands wird auch das Scheduling gewechselt.</li>
+<li>Dieser Wechsel ist kritisch und kann grundsätzlich nur in Grund-Zustand der Appliation ausgeführt werden.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69eaf11" class="outline-2">
+<h2 id="org69eaf11"><span class="section-number-2">45</span> 59 Fault-Tolerance</h2>
+<div class="outline-text-2" id="text-45">
+<p>
+Die Fault-Tolerance eines Systems gibt an in wie fern Fehler im System auftreten können, ohne das dabei unvorhergesehene Ereignisse auftreten und es zu Schaden kommt.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb0b317" class="outline-2">
+<h2 id="orgdb0b317"><span class="section-number-2">46</span> 60 Nenne die Hauptmotivation für Fehlertoleranz</h2>
+<div class="outline-text-2" id="text-46">
+<p>
+Kein einzeln auftretender Fehler soll zu Versagen des Systems führen.
+</p>
+
+<p>
+Wichtig bei sicherheitsrelevanten Systemen, da es ohne zu Schaden an Leib und Leben kommen kann.
+</p>
+
+<p>
+Kann auch bei nicht sicherheitsrelevanten Systemen gefordert sein um monetären und materiellen Schaden zu verhindern.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdcdc195" class="outline-2">
+<h2 id="orgdcdc195"><span class="section-number-2">47</span> 61 Erkläre den Zusammenhang zwischen Fault, Error und</h2>
+<div class="outline-text-2" id="text-47">
+<p>
+Failure
+</p>
+
+<p>
+Der FAULT ist die Fehlerursache/Ursprung, durch diesen kann das System in einen nicht beabsichtigten Zustand kommen -&gt; ERROR. Durch den Verbleib in diesem Zustand weicht die Operation des Systems von der geplanten ab und es kommt zur Fehlfunktion -&gt; FAILURE
+</p>
+
+<p>
+Der FAILURE eines Subsystems kann der FAULT, also die Fehlerursache des Systems sein, welches mit diesem Subsystem interagiert.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0f08be" class="outline-2">
+<h2 id="orgd0f08be"><span class="section-number-2">48</span> 62 Unterschied zwischen consistent und inconsistent failure</h2>
+<div class="outline-text-2" id="text-48">
+<p>
+Bei einem consistent failure Szenario erkennen alle Benutzer das ein Fehler aufgetreten ist. Bei einem inconstistent failure nicht. 
+</p>
+
+<p>
+Ein fail-silent System welches nur korrekte Resulate schickt und ansonsten keine fällt dementsprechend auch in die consistent failure Kategorie.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1375944" class="outline-2">
+<h2 id="org1375944"><span class="section-number-2">49</span> 63 Erkläre permanent failure, transient failure und intermittent failure Wie kann ein Error korrigiert werden?</h2>
+<div class="outline-text-2" id="text-49">
+<p>
+permanent:
+Bei diesem Fehler kann die Operation des Systems erst nach der Korrekture/Reparatur des Fehlers wieder aufgenommen werden.
+</p>
+
+<p>
+transient:
+Fehler ist aufgetreten aber die Operation wird währenddessen weiter durchgeführt. Häufiger als permanente Fehler. Meist nur temporär und korrigiert sich manchmal auch wieder von alleine.
+</p>
+
+<p>
+intermittent:
+Der Fehler tritt häufig auf jedoch nicht immer. In Intervallen jeodoch irregulär.
+</p>
+
+<p>
+Um einen Error zu korrigieren muss dieser zuerst erkannt werden. Der korrekte Zustand muss bekannt sein durch vorhergehendes Wissen oder vergleich von redundanten Systemen. Danach kann dieser korrigiert werden, hauptsächlich durch redundante Systeme.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9ca178e" class="outline-2">
+<h2 id="org9ca178e"><span class="section-number-2">50</span> 64 Welche Arten von Faults gibt es?</h2>
+<div class="outline-text-2" id="text-50">
+<p>
+chance fault: zufälliger Hardware Fehler, wie Kabelbruch etc.
+</p>
+
+<p>
+intentional fault: sabotage, in SW trojaner/virus
+</p>
+
+<p>
+design fault: nicht beabsichtigt aber ausgelöst durch error in design. Mit strengem requirement engineering kann dem vorgebeugt werden.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd86bd45" class="outline-2">
+<h2 id="orgd86bd45"><span class="section-number-2">51</span> 70 Warum ist ein Node als Unit of Failure geeignet</h2>
+<div class="outline-text-2" id="text-51">
+<p>
+[Foliensatz 3 Seite 22]
+Ein Knoten ist eine in sich geschlossene Einheit, die eine Funktion über eine definierte Schnittstelle sowie Maßnahmen zur Verhinderung der Ausbreitung von Fehlern außerhalb des Knotens (Fehlerbegrenzungsbereich) bereitstellt. 
+Ein Ausfall eines Knotens entspricht somit dem Ausfall der Funktion des Knotens.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org46e6bd6" class="outline-2">
+<h2 id="org46e6bd6"><span class="section-number-2">52</span> 71: Wie viele redundante Einheiten werden für fail-inconsistent Nodes benötigt um k Fehler zu tolerieren?</h2>
+<div class="outline-text-2" id="text-52">
+<ul class="org-ul">
+<li>2*k+1 Komponenten, wenn die Knoten nur fail-inconsitent sind.</li>
+<li>3*k+1 Komponenten, wenn die Knoten  fail-inconsitent und ein agreement zwischen den Knoten erreicht werden muss</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org84d46c9" class="outline-2">
+<h2 id="org84d46c9"><span class="section-number-2">53</span> 73 Was leistet ein Membership Service?</h2>
+<div class="outline-text-2" id="text-53">
+<ul class="org-ul">
+<li>Liefert Aktivitäts-Informationen über Knoten in einem System.</li>
+<li>Informationen können sein: Alter der Information, Fehler-Toleranz, Ob alle teilnehmenden Knoten dem Membership Service zustimmen oder nicht.</li>
+<li>Beispiel: Kann dazu verwendet werden, um herauszufinden ob eine System genug Knoten zur Verfügung hat um eine spezielle Aktivität auszuführen!</li>
+<li>Ein fehlertolerates Membership Protokoll muss mindestens 3 Mechanismens bereitstellen: Status über alle teilnehmenden Knoten sammeln, Zustimmung über den Vektor der Knoten Statuse, Verteilung des zugestimmten Knoten Status Vektor</li>
+<li>Größtes Problem: Erkennen von Gruppierungen von Knoten (Subnetze von Knoten), welche andere Gruppierungen als "Offline" ansehen</li>
+<li>Jene Knoten die eine Abweichung zwischen beobachteten und der tatsächlichen Membership Information erkennen, müssen annehmen dass sie fehlerhaft sind, und sich daher von der Membership Gruppe lösen.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdbdacd8" class="outline-2">
+<h2 id="orgdbdacd8"><span class="section-number-2">54</span> 74 Erkläre Atomic Multicast</h2>
+<div class="outline-text-2" id="text-54">
+<p>
+Dieser Service garantiert die korrekte Zustellung von Nachrichten, sowie in korrekter Reihenfolge an alle Empfänger in einer Gruppe. Im Fehlerfall werden die Nachrichten gemeinsam verworfen ohne dass es zu Nebenwirkungen im System kommt.
+</p>
+
+<p>
+Wird genutzt um konsistenten Nachrichten Stream an multiple Nodes zu gewährleisten.
+</p>
+
+<p>
+Variiert in:
+Benötigte Anzahl an bestätigten Nachrichten 
+Anzahl an tolerierten fehlerhaften Nodes
+Zeittoleranz bis Agreement getroffen werden muss
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Christoph Viehboeck</p>
+<p class="date">Created: 2020-02-06 Thu 12:34</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
